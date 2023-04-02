@@ -12,21 +12,16 @@ def random_data_generator(mu, sigma) -> np.ndarray:  # box muller method
 
     return x
 
-def linear_model_data_generator(n,a,w, num: int)->np.ndarray: 
-    result = np.zeros(num)
+def linear_model_data_generator(n,a,w)->np.ndarray: 
+    x = np.random.uniform(-1,1)
 
-    for k in range(num):
-        x = np.random.uniform(-1,1)
+    fi_x = np.array([x**i for i in range(n)])
 
-        fi_x = np.array([x**i for i in range(n)])
+    e = random_data_generator(0,math.sqrt(a))
 
-        e = random_data_generator(0,math.sqrt(a),1).item()
+    y = np.dot(w,fi_x) + e
 
-        y = np.dot(w,fi_x) + e
-
-        result[k] = y
-    
-    return result
+    return [x,y]
 
 if __name__=="__main__":
     result = np.zeros(100)

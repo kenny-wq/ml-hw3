@@ -2,7 +2,7 @@ import math
 import numpy as np
 from random_data_generator import *
 
-def sequential_estimator(mu, var):
+def sequential_estimator(mu, var):  # welford algorithm
     print(f"Data point source function: N({mu}, {var})")
 
     i = 1
